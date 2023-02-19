@@ -1,5 +1,5 @@
 # Python for Data Analysis Practice Repository
-This repository contains practice code and examples from the book 'Python for Data Analysis' by Wes McKinney.
+This repository contains practice code and examples from the book ['['Python for Data Analysis' by Wes McKinney](https://wesmckinney.com/book/)](https://wesmckinney.com/book/).
 
 ## Table of Contents
 
@@ -11,7 +11,7 @@ This repository contains practice code and examples from the book 'Python for Da
 
 ## Background
 
-In this repository, I practice the techniques and examples outlined in 'Python for Data Analysis' by Wes McKinney. The code in this repository covers a wide range of topics, including data manipulation, data visualization, and statistical analysis.
+In this repository, I practice the techniques and examples outlined in ['Python for Data Analysis' by Wes McKinney](https://wesmckinney.com/book/). The code in this repository covers a wide range of topics, including data manipulation, data visualization, and statistical analysis.
 
 ## Installation
 
