@@ -3,7 +3,11 @@ This repository contains practice code and examples from the book 'Python for Da
 
 ## Table of Contents
 
-- [Background](#background)\n- [Installation](#installation)\n- [Usage](#usage)\n- [Contributing](#contributing)\n- [License](#license)
+- [Background](#background)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Background
 
@@ -13,7 +17,9 @@ In this repository, I practice the techniques and examples outlined in 'Python f
 
 To use the code in this repository, you will need to have Python and the required packages installed on your system. To install the required packages, you can run the following command:
 
-```\npip install -r requirements.txt\n```
+```
+pip install -r requirements.txt
+```
 
 ## Usage
 
