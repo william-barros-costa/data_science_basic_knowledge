@@ -200,3 +200,58 @@ df1.reindex(columns=df2.columns, fill_value=0)
 frame = DataFrame(np.arange(12.).reshape((3,4)))
 serie = frame.iloc[0]
 frame, serie, frame - serie
+
+# %% Subtraction
+frame = pd.DataFrame(np.arange(12.).reshape((4, 3)), columns=list("bde"), index=["Utah", "Ohio", "Texas", "Oregon"])
+serie = Series(np.arange(3), index=["b", "e", "f"])
+
+frame, serie, frame - serie
+
+# %% Subtraction over index
+frame = pd.DataFrame(np.arange(12.).reshape((4, 3)), columns=list("bde"), index=["Utah", "Ohio", "Texas", "Oregon"])
+serie = frame["d"]
+
+frame, serie, frame.sub(serie, axis="index")
+
+# %% Mapping functions
+def f1(x: np.array):
+        return x.max() - x.min()
+
+frame = pd.DataFrame(np.random.standard_normal((4, 3)), columns=list("bde"), index=["Utah", "Ohio", "Texas", "Oregon"])
+
+np.abs(frame), frame.apply(f1), frame.apply(f1, axis=1)
+
+# %% Mapping Functions with Series as output
+def f2(x):
+        return Series([x.min(), x.max()], index=["min", "max"])
+
+frame.apply(f2)
+
+# %% Elemente Wise
+def f3(x):
+        return f"{x:.2f}"
+
+frame, frame.applymap(f3)
+
+# %% Sorting
+frame = Series(np.arange(4), index=["d", "a", "b", "c"])
+frame, frame.sort_index()
+
+# %% Sorting columns
+frame = pd.DataFrame(np.arange(8).reshape((2, 4)), index=["three", "one"], columns=["d", "a", "b", "c"])
+
+frame, frame.sort_index(axis="columns", ascending=False)
+
+# %% Sorting a series
+serie = Series([4, np.nan, 2,5,1])
+
+serie, serie.sort_values(na_position="first")
+
+# %% Ranking (Order. Ties are handled according to method)
+serie = Series([7, -5, 4, 2, 6, 0, 7])
+
+serie.rank(), serie.rank(ascending=False), \
+serie.rank(method="dense"),
+serie.rank(method="max"), \
+serie.rank(method="min"), \
+serie.rank(method="first")
