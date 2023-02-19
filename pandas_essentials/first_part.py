@@ -196,3 +196,7 @@ df1,df2,df1 + df2, df1.add(df2, fill_value=0)
 # %% Reindex fill
 df1.reindex(columns=df2.columns, fill_value=0)
 
+# %% Operations between Dataframe and Series
+frame = DataFrame(np.arange(12.).reshape((3,4)))
+serie = frame.iloc[0]
+frame, serie, frame - serie
