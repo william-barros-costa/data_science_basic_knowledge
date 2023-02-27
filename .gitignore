@@ -1,3 +1,7 @@
 /.venv
 *.csv
 ex3.txt
+.xml
+.html
+.xlsx
+.json
