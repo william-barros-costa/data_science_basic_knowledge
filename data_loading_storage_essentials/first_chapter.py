@@ -136,4 +136,84 @@ json_object = """
 }
 """
 
+result = json.loads(json_object)
 
+result
+
+# %% Convert to Json
+as_json = json.dumps(result)
+
+as_json
+
+# %% json to DataFrame
+json_object = """
+{"name": "Wes",
+ "cities_lived": ["Akron", "Nashville", "New York", "San Francisco"],
+ "pet": null,
+ "siblings": [{"name": "Scott", "age": 34, "hobbies": ["guitars", "soccer"]},
+              {"name": "Katie", "age": 42, "hobbies": ["diving", "art"]}]
+}
+"""
+
+result = json.loads(json_object)
+frame = DataFrame(result['siblings'], columns=['name', 'age'])
+
+frame
+
+# %% Simpler way to get DataFrame from json
+location = r"C:\Users\William\Desktop\repository\data_science\resources\ex8.json"
+
+frame = pd.read_json(location)
+frame
+
+# %% Dataframe to Json
+frame.to_json(sys.stdout)
+print()
+frame.to_json(sys.stdout, orient="records")
+
+# %% Read all tables from HTML
+location = r"C:\Users\William\Desktop\repository\data_science\resources\ex9.html"
+frame_list = pd.read_html(location)
+
+failures = frame_list[0]
+failures
+
+# %% Parsing XML
+location = r"C:\Users\William\Desktop\repository\data_science\resources\ex19.xm"
+
+xml = pd.read_xml(location)
+xml
+
+# %% Install Excel Files in pandas
+!pip install openpyxl xlrd
+
+#%% Excel files
+
+location = r"C:\Users\William\Desktop\repository\data_science\resources"
+xlsx = pd.ExcelFile(f"{location}\\test.xlsx")
+
+xlsx.sheet_names
+
+# %% Write on Excel file
+location = r"C:\Users\William\Desktop\repository\data_science\resources"
+writer = pd.ExcelWriter(f"{location}\\test.xlsx")
+
+frame = DataFrame([[1,2,3],[1,2,3],[1,2,3]], columns=["col1", "col2", "col3"], index=["row1", "row2", "row3"])
+
+
+frame.to_excel(writer, "Sheet1")
+writer.save()
+
+# %% Read Excel files
+location = r"C:\Users\William\Desktop\repository\data_science\resources"
+xlsx = pd.ExcelFile(f"{location}\\test.xlsx")
+
+frame = xlsx.parse(sheet_name="Sheet1", index_col=0)
+frame
+
+# %% Another option to read
+location = r"C:\Users\William\Desktop\repository\data_science\resources"
+frame = pd.read_excel(f"{location}\\test.xlsx", sheet_name="Sheet1", index_col=0)
+frame
+
+# There are still ways of interacting with extensions hdf, h5py and even SQL files.
